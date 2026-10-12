@@ -1,0 +1,1266 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Goni Pastas - Pastas frescas artesanales, sorrentinos gourmet y empanadas congeladas listas para cocinar. Envíos a domicilio y pedidos directos por WhatsApp."
+    />
+    <title>Goni Pastas | Pastas Frescas</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+
+    <!-- Google Fonts: Playfair Display + Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome para Iconografía -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Leaflet CSS para Mapa Interactivo de Zonas de Envío -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ==============================================
+       HEADER & BARRA DE NAVEGACIÓN FIJA
+       ============================================== -->
+    <header class="site-header" id="header">
+      <div class="header-container">
+        <a href="#inicio" class="brand-logo" id="brand-logo-link">
+          <img
+            src="assets/logo.png"
+            alt="Logo Goni Pastas"
+            class="logo-img"
+            id="header-logo"
+            onerror="this.src = 'Captura de pantalla 2026-10-11 193916.png'"
+          />
+          <div class="brand-text">
+            <span class="brand-title">Goni Pastas</span>
+            <span class="brand-subtitle">Pastas & Empanadas</span>
+          </div>
+        </a>
+
+        <!-- Navegación de Escritorio -->
+        <nav class="nav-menu" id="nav-menu" aria-label="Navegación principal">
+          <ul class="nav-list">
+            <li>
+              <a href="#inicio" class="nav-link active" id="nav-item-inicio"
+                >Inicio</a
+              >
+            </li>
+            <li>
+              <a href="#nosotros" class="nav-link" id="nav-item-nosotros"
+                >Quiénes Somos</a
+              >
+            </li>
+            <li>
+              <a href="#pastas" class="nav-link" id="nav-item-pastas"
+                >Nuestras Pastas</a
+              >
+            </li>
+            <li>
+              <a href="#vegetarianas" class="nav-link" id="nav-item-veggie">
+                <span class="veggie-dot"></span> Vegetarianas
+              </a>
+            </li>
+            <li>
+              <a href="#envios" class="nav-link" id="nav-item-envios"
+                >Envíos & Horarios</a
+              >
+            </li>
+            <li>
+              <a href="#contacto" class="nav-link" id="nav-item-contacto"
+                >Contacto</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Botón CTA Header + Botón Hamburguesa Móvil -->
+        <div class="header-actions">
+          <a
+            href="#pastas"
+            class="btn btn-primary header-cta"
+            id="btn-header-order"
+          >
+            <i class="fa-solid fa-utensils"></i>
+            <span>Hacer Pedido</span>
+          </a>
+          <button
+            class="mobile-toggle"
+            id="mobile-toggle"
+            aria-label="Abrir menú de navegación"
+            aria-expanded="false"
+          >
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Overlay de Menú Móvil -->
+    <div class="mobile-backdrop" id="mobile-backdrop"></div>
+
+    <main>
+      <!-- ==============================================
+         SECCIÓN HERO (BIENVENIDA Y LLAMADO A LA ACCIÓN)
+         ============================================== -->
+      <section class="hero-section" id="inicio">
+        <div class="hero-bg-overlay"></div>
+        <div class="container hero-content">
+          <div class="hero-text-col">
+            <div class="hero-badge">
+              <i class="fa-solid fa-wheat-awn"></i>
+              <span>Masa fresca 100% artesanal • Sin conservantes</span>
+            </div>
+            <h1 class="hero-title">
+              El auténtico sabor de la pasta casera en tu mesa
+            </h1>
+            <p class="hero-description">
+              En <strong>Goni Pastas</strong> elaboramos a mano sorrentinos
+              abundantes y exquisitas empanadas congeladas listas para hornear o
+              freír. Tradición, masa al huevo y el mejor relleno.
+            </p>
+            <div class="hero-buttons">
+              <a
+                href="https://wa.me/5491164645474?text=Hola%20Goni%20Pastas!%20Quiero%20hacer%20un%20pedido%20de%20pastas%20y%20empanadas"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-whatsapp-cta"
+                id="hero-btn-wa"
+              >
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>Pedir por WhatsApp</span>
+              </a>
+              <a href="#pastas" class="btn btn-secondary" id="hero-btn-menu">
+                <i class="fa-solid fa-book-open"></i>
+                <span>Ver Carta y Precios</span>
+              </a>
+            </div>
+
+            <div class="hero-perks">
+              <div class="perk-item">
+                <i class="fa-solid fa-motorcycle"></i>
+                <div>
+                  <strong>Envíos a Domicilio</strong>
+                  <span>Entregas directas en tu zona</span>
+                </div>
+              </div>
+              <div class="perk-item">
+                <i class="fa-solid fa-snowflake"></i>
+                <div>
+                  <strong>Empanadas Congeladas</strong>
+                  <span>Del freezer a tu horno en 15 min</span>
+                </div>
+              </div>
+              <div class="perk-item">
+                <i class="fa-solid fa-heart"></i>
+                <div>
+                  <strong>100% Artesanal</strong>
+                  <span>Elaboración fresca cada día</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-image-col">
+            <div class="hero-card-featured">
+              <img
+                src="assets/hero-pasta.png"
+                alt="Sorrentinos y pastas caseras artesanales de Goni Pastas"
+                class="hero-featured-img"
+                onerror="this.src = 'Captura de pantalla 2026-10-11 193916.png'"
+              />
+              <div class="hero-card-floating-badge badge-top">
+                <span class="badge-icon">⭐</span>
+                <div>
+                  <strong>Especialidad de la casa</strong>
+                  <small>Sorrentinos rellenos a mano</small>
+                </div>
+              </div>
+              <div class="hero-card-floating-badge badge-bottom">
+                <span class="badge-icon">🥟</span>
+                <div>
+                  <strong>Empanadas Congeladas</strong>
+                  <small>Masa crocante y relleno generoso</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+         SECCIÓN QUIÉNES SOMOS
+         ============================================== -->
+      <section class="section about-section" id="nosotros">
+        <div class="container">
+          <div class="about-grid">
+            <div class="about-visual">
+              <div class="about-image-wrapper">
+                <img
+                  src="assets/sorrentinos.png"
+                  alt="Elaboración artesanal de sorrentinos en Goni Pastas"
+                  class="about-main-img"
+                  onerror="this.src = 'assets/hero-pasta.png'"
+                />
+                <div class="about-experience-badge">
+                  <span class="exp-number">100%</span>
+                  <span class="exp-text">Casero & Natural</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-text-content">
+              <div class="section-tag">
+                <i class="fa-solid fa-kitchen-set"></i> Nuestra Historia
+              </div>
+              <h2 class="section-title">Pasión artesanal en cada bocado</h2>
+              <p class="about-lead">
+                En <strong>Goni Pastas</strong> nacimos con una premisa simple y
+                honesta: volver a la mesa de los domingos, al aroma de la salsa
+                burbujeando y a la pasta fresca hecha con cariño.
+              </p>
+              <p class="about-paragraph">
+                Comenzamos en nuestra cocina familiar seleccionando harinas de
+                primera calidad, huevos de campo y quesos genuinos. No
+                utilizamos conservantes industriales ni rellenos artificiales:
+                cada sorrentino se sella artesanalmente y nuestras empanadas se
+                congelan frescas en su punto justo para que mantengan la masa
+                aireada y el relleno jugoso.
+              </p>
+
+              <div class="about-features-list">
+                <div class="feature-box">
+                  <div class="feature-icon">
+                    <i class="fa-solid fa-wheat-awn"></i>
+                  </div>
+                  <div>
+                    <h4>Masa al Huevo Tradicional</h4>
+                    <p>
+                      Amasada y sobada a punto para una textura suave que
+                      sostiene la cocción sin romperse.
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-box">
+                  <div class="feature-icon">
+                    <i class="fa-solid fa-cheese"></i>
+                  </div>
+                  <div>
+                    <h4>Rellenos Reales y Abundantes</h4>
+                    <p>
+                      Muzzarella seleccionada, verduras frescas de huerta,
+                      carnes braseadas y especias naturales.
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-box">
+                  <div class="feature-icon">
+                    <i class="fa-solid fa-box-open"></i>
+                  </div>
+                  <div>
+                    <h4>Congelado Práctico & Rápido</h4>
+                    <p>
+                      Tus empanadas y pastas van del freezer al agua o al horno
+                      en minutos, siempre como recién hechas.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+         SECCIÓN NUESTRAS PASTAS & EMPANADAS
+         ============================================== -->
+      <section class="section menu-section" id="pastas">
+        <div class="container">
+          <div class="section-header text-center">
+            <div class="section-tag">
+              <i class="fa-solid fa-bowl-food"></i> Nuestra Carta Artesanal
+            </div>
+            <h2 class="section-title">Pastas Frescas & Empanadas Congeladas</h2>
+            <p class="section-subtitle">
+              Elegí tus variedades favoritas. Hacé clic en "Pedir" para encargar
+              directamente por WhatsApp o consultar el stock del día.
+            </p>
+
+            <!-- Filtros de Categorías -->
+            <div class="category-filters" id="category-filters" role="tablist">
+              <button
+                class="filter-btn active"
+                data-filter="all"
+                role="tab"
+                id="filter-all"
+              >
+                <i class="fa-solid fa-list-check"></i> Todos
+              </button>
+              <button
+                class="filter-btn"
+                data-filter="sorrentinos"
+                role="tab"
+                id="filter-sorrentinos"
+              >
+                <i class="fa-solid fa-cookie"></i> Sorrentinos
+              </button>
+              <button
+                class="filter-btn"
+                data-filter="empanadas"
+                role="tab"
+                id="filter-empanadas"
+              >
+                <i class="fa-solid fa-cloud"></i> Empanadas Congeladas
+              </button>
+            </div>
+          </div>
+
+          <!-- Grilla de Productos -->
+          <div class="products-grid" id="products-grid">
+            <!-- Producto 1: Sorrentinos Jamón y Queso -->
+            <article
+              class="product-card"
+              data-category="sorrentinos"
+              id="product-sorrentinos-jyq"
+            >
+              <div class="card-badge-category">Rellenas</div>
+              <div class="product-img-box">
+                <img
+                  src="assets/sorrentinos.png"
+                  alt="Sorrentinos de Jamón Cocido y Mozzarella Goni Pastas"
+                  class="product-img"
+                  onerror="this.src = 'assets/hero-pasta.png'"
+                />
+              </div>
+              <div class="product-info">
+                <div class="product-meta">
+                  <span class="product-portion"
+                    ><i class="fa-solid fa-box"></i> Plancha x 15 u. (2
+                    porciones)</span
+                  >
+                  <span class="product-time"
+                    ><i class="fa-regular fa-clock"></i> 7 min de hervor</span
+                  >
+                </div>
+                <h3 class="product-name">
+                  Sorrentinos Clásicos de Jamón y Muzzarella
+                </h3>
+                <p class="product-desc">
+                  Nuestra receta insignia. Abundante jamón cocido seleccionado y
+                  muzzarella cremosa de primera calidad envueltos en suave masa
+                  al huevo.
+                </p>
+                <div class="product-footer">
+                  <div class="product-price">
+                    <span class="price-currency">$</span>
+                    <span class="price-value">13.000</span>
+                    <span class="price-unit">/ caja</span>
+                  </div>
+                  <button
+                    class="btn btn-order-item"
+                    onclick="
+                      pedirProducto(
+                        'Sorrentinos Clásicos de Jamón y Muzzarella',
+                        '$13.000',
+                      )
+                    "
+                    id="btn-order-jyq"
+                  >
+                    <i class="fa-brands fa-whatsapp"></i> Pedir
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Producto 2: Sorrentinos Verdura -->
+            <article
+              class="product-card"
+              data-category="sorrentinos"
+              id="product-sorrentinos-verdura"
+            >
+              <div class="card-badge-category card-badge-special">
+                ⭐ Especialidad
+              </div>
+              <div class="product-img-box">
+                <img
+                  src="assets/sorrentinos.png"
+                  alt="Sorrentinos de Verdura Goni Pastas"
+                  class="product-img"
+                  onerror="this.src = 'assets/hero-pasta.png'"
+                />
+              </div>
+              <div class="product-info">
+                <div class="product-meta">
+                  <span class="product-portion"
+                    ><i class="fa-solid fa-box"></i> Plancha x 15 u. (2
+                    porciones)</span
+                  >
+                  <span class="product-time"
+                    ><i class="fa-regular fa-clock"></i> 7 min de hervor</span
+                  >
+                </div>
+                <h3 class="product-name">Sorrentinos de Verdura</h3>
+                <p class="product-desc">
+                  Sorrentinos rellenos de acelga y ricotta, con un toque de nuez
+                  moscada y parmesano rallado. Sabor gourmet único.
+                </p>
+                <div class="product-footer">
+                  <div class="product-price">
+                    <span class="price-currency">$</span>
+                    <span class="price-value">13.000</span>
+                    <span class="price-unit">/ caja</span>
+                  </div>
+                  <button
+                    class="btn btn-order-item"
+                    onclick="pedirProducto('Sorrentinos de Verdura', '$13.000')"
+                    id="btn-order-sorrentinos-verdura"
+                  >
+                    <i class="fa-brands fa-whatsapp"></i> Pedir
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Producto 3: Sorrentinos de Carne desmechada -->
+            <article
+              class="product-card"
+              data-category="sorrentinos"
+              id="product-sorrentinos-carne"
+            >
+              <div class="card-badge-category">Rellenas</div>
+              <div class="product-img-box">
+                <img
+                  src="assets/hero-pasta.png"
+                  alt="Sorrentinos de Carne desmechada Goni Pastas"
+                  class="product-img"
+                />
+              </div>
+              <div class="product-info">
+                <div class="product-meta">
+                  <span class="product-portion"
+                    ><i class="fa-solid fa-box"></i> Plancha x 15 u. (2
+                    porciones)</span
+                  >
+                  <span class="product-time"
+                    ><i class="fa-regular fa-clock"></i> 5 min de hervor</span
+                  >
+                </div>
+                <h3 class="product-name">Sorrentinos de Carne desmechada</h3>
+                <p class="product-desc">
+                  Carne de res deshilachada cocida con puerros y cebollitas de
+                  verdeo, ligada con queso parmesano estacionado y toque de nuez
+                  moscada.
+                </p>
+                <div class="product-footer">
+                  <div class="product-price">
+                    <span class="price-currency">$</span>
+                    <span class="price-value">13.000</span>
+                    <span class="price-unit">/ caja</span>
+                  </div>
+                  <button
+                    class="btn btn-order-item"
+                    onclick="
+                      pedirProducto(
+                        'Sorrentinos de Carne desmechada',
+                        '$13.000',
+                      )
+                    "
+                    id="btn-order-sorrentinos-carne"
+                  >
+                    <i class="fa-brands fa-whatsapp"></i> Pedir
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Producto 4: Empanadas de Carne a Cuchillo Congeladas -->
+            <article
+              class="product-card"
+              data-category="empanadas"
+              id="product-empanadas-carne"
+            >
+              <div class="card-badge-category card-badge-freeze">
+                ❄️ Congeladas
+              </div>
+              <div class="product-img-box">
+                <img
+                  src="assets/empanadas.png"
+                  alt="Empanadas de carne a cuchillo congeladas Goni Pastas"
+                  class="product-img"
+                />
+              </div>
+              <div class="product-info">
+                <div class="product-meta">
+                  <span class="product-portion"
+                    ><i class="fa-solid fa-box"></i> Caja x 12 unidades</span
+                  >
+                  <span class="product-time"
+                    ><i class="fa-solid fa-fire-burner"></i> 15 min al
+                    horno</span
+                  >
+                </div>
+                <h3 class="product-name">
+                  Empanadas Criollas de Carne a Cuchillo
+                </h3>
+                <p class="product-desc">
+                  Corte de carne tierna cortada a cuchillo, cebolla cocida en
+                  grasa de pella, huevo duro, cebolla de verdeo y especias del
+                  norte. ¡Súper jugosas!
+                </p>
+                <div class="product-footer">
+                  <div class="product-price">
+                    <span class="price-currency">$</span>
+                    <span class="price-value">7.800</span>
+                    <span class="price-unit">/ docena</span>
+                  </div>
+                  <button
+                    class="btn btn-order-item"
+                    onclick="
+                      pedirProducto(
+                        'Docena de Empanadas de Carne a Cuchillo',
+                        '$7.800',
+                      )
+                    "
+                    id="btn-order-emp-carne"
+                  >
+                    <i class="fa-brands fa-whatsapp"></i> Pedir
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Producto 5: Empanadas de Pollo al Verdeo Congeladas -->
+            <article
+              class="product-card"
+              data-category="empanadas"
+              id="product-empanadas-pollo"
+            >
+              <div class="card-badge-category card-badge-freeze">
+                ❄️ Congeladas
+              </div>
+              <div class="product-img-box">
+                <img
+                  src="assets/empanadas.png"
+                  alt="Empanadas de pollo al verdeo congeladas Goni Pastas"
+                  class="product-img"
+                />
+              </div>
+              <div class="product-info">
+                <div class="product-meta">
+                  <span class="product-portion"
+                    ><i class="fa-solid fa-box"></i> Caja x 12 unidades</span
+                  >
+                  <span class="product-time"
+                    ><i class="fa-solid fa-fire-burner"></i> 15 min al
+                    horno</span
+                  >
+                </div>
+                <h3 class="product-name">Empanadas de Pollo al Verdeo</h3>
+                <p class="product-desc">
+                  Relleno abundante de pollo salteado con puerros tiernos,
+                  reducción suave de crema y condimentos equilibrados. Masa
+                  casera hojaldrada.
+                </p>
+                <div class="product-footer">
+                  <div class="product-price">
+                    <span class="price-currency">$</span>
+                    <span class="price-value">7.500</span>
+                    <span class="price-unit">/ docena</span>
+                  </div>
+                  <button
+                    class="btn btn-order-item"
+                    onclick="
+                      pedirProducto(
+                        'Docena de Empanadas de Pollo al Verdeo',
+                        '$7.500',
+                      )
+                    "
+                    id="btn-order-emp-pollo"
+                  >
+                    <i class="fa-brands fa-whatsapp"></i> Pedir
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Producto 6: Empanadas Jamón y Mozzarella -->
+            <article
+              class="product-card"
+              data-category="empanadas"
+              id="product-empanadas-jyq"
+            >
+              <div class="card-badge-category card-badge-freeze">
+                ❄️ Congeladas
+              </div>
+              <div class="product-img-box">
+                <img
+                  src="assets/empanadas.png"
+                  alt="Empanadas de jamón y mozzarella congeladas Goni Pastas"
+                  class="product-img"
+                />
+              </div>
+              <div class="product-info">
+                <div class="product-meta">
+                  <span class="product-portion"
+                    ><i class="fa-solid fa-box"></i> Caja x 12 unidades</span
+                  >
+                  <span class="product-time"
+                    ><i class="fa-solid fa-fire-burner"></i> 15 min al
+                    horno</span
+                  >
+                </div>
+                <h3 class="product-name">Empanadas de Jamón y Muzzarella</h3>
+                <p class="product-desc">
+                  Puro queso muzzarella elástico con abundantes cubos de jamón
+                  cocido seleccionado. Ideales para grandes y chicos, listas en
+                  minutos.
+                </p>
+                <div class="product-footer">
+                  <div class="product-price">
+                    <span class="price-currency">$</span>
+                    <span class="price-value">7.200</span>
+                    <span class="price-unit">/ docena</span>
+                  </div>
+                  <button
+                    class="btn btn-order-item"
+                    onclick="
+                      pedirProducto(
+                        'Docena de Empanadas de Jamón y Muzzarella',
+                        '$7.200',
+                      )
+                    "
+                    id="btn-order-emp-jyq"
+                  >
+                    <i class="fa-brands fa-whatsapp"></i> Pedir
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Banner de Pedido Personalizado -->
+          <div class="menu-custom-callout">
+            <div class="callout-icon">
+              <i class="fa-solid fa-sparkles"></i>
+            </div>
+            <div class="callout-text">
+              <h3>¿Buscás pastas para un evento o reunión familiar?</h3>
+              <p>
+                Armamos planchas surtidas y pedidos especiales con descuento.
+                Consultanos directo por WhatsApp.
+              </p>
+            </div>
+            <a
+              href="https://wa.me/5491164645474?text=Hola%20Goni%20Pastas!%20Quisiera%20consultar%20por%20pedidos%20especiales%20o%20cajas%20surtidas"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-whatsapp-cta"
+              id="btn-custom-catering"
+            >
+              <i class="fa-brands fa-whatsapp"></i> Consultar Ahora
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+         SECCIÓN OPCIONES VEGETARIANAS (DESTACADO SIN CARNE)
+         ============================================== -->
+      <section class="section veggie-section" id="vegetarianas">
+        <div class="container">
+          <div class="section-header text-center">
+            <div class="section-tag veggie-tag">
+              <i class="fa-solid fa-seedling"></i> 100% Sin Carne • Sabor
+              Supremo
+            </div>
+            <h2 class="section-title">Nuestras Opciones Vegetarianas</h2>
+            <p class="section-subtitle">
+              Recetas vegetarianas diseñadas para que el sabor sea el gran
+              protagonista. Rellenos generosos de verduras asadas de estación,
+              hierbas frescas y quesos de máxima pureza.
+            </p>
+          </div>
+
+          <div class="veggie-showcase-grid">
+            <!-- Columna Izquierda: Tarjetas Veggie -->
+            <div class="veggie-cards-col">
+              <!-- Veggie 2: Acelga, Ricota y Provolone -->
+              <div class="veggie-item-card" id="veggie-acelga">
+                <div class="veggie-badge-leaf">
+                  <i class="fa-solid fa-leaf"></i> Clásico Verde
+                </div>
+                <div class="veggie-card-body">
+                  <div class="veggie-header-row">
+                    <h4>Sorrentinos de Acelga, Ricota Cremosa & Provolone</h4>
+                    <span class="veggie-price"
+                      >$4.300 <small>/ caja 12u</small></span
+                    >
+                  </div>
+                  <p>
+                    Acelga fresca salteada a la sartén con ricota magra y un
+                    toque de queso provolone picantito que le da carácter y
+                    aroma irresistible.
+                  </p>
+                  <div class="veggie-card-action">
+                    <span class="veggie-tag-pill">🌱 Sin carne</span>
+                    <span class="veggie-tag-pill">⏱️ 7 min</span>
+                    <button
+                      class="btn btn-sm btn-order-item"
+                      onclick="
+                        pedirProducto(
+                          'Sorrentinos de Acelga, Ricota & Provolone',
+                          '$4.300',
+                        )
+                      "
+                    >
+                      <i class="fa-brands fa-whatsapp"></i> Pedir
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Veggie 4: Empanadas de Verduras Asadas y Gouda -->
+              <div class="veggie-item-card" id="veggie-verduras">
+                <div class="veggie-badge-leaf">
+                  <i class="fa-solid fa-snowflake"></i> Congeladas
+                </div>
+                <div class="veggie-card-body">
+                  <div class="veggie-header-row">
+                    <h4>Empanadas de Verduras Asadas & Queso Gouda</h4>
+                    <span class="veggie-price"
+                      >$7.400 <small>/ docena</small></span
+                    >
+                  </div>
+                  <p>
+                    Zucchini, berenjena, morrones asados y cebollas
+                    caramelizadas combinados con queso gouda fundido. Sabor
+                    intenso y natural.
+                  </p>
+                  <div class="veggie-card-action">
+                    <span class="veggie-tag-pill">🌱 Sin carne</span>
+                    <span class="veggie-tag-pill">🔥 15 min horno</span>
+                    <button
+                      class="btn btn-sm btn-order-item"
+                      onclick="
+                        pedirProducto(
+                          'Docena de Empanadas de Verduras Asadas y Gouda',
+                          '$7.400',
+                        )
+                      "
+                    >
+                      <i class="fa-brands fa-whatsapp"></i> Pedir
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Columna Derecha: Imagen destacada & Tips -->
+            <div class="veggie-banner-col">
+              <div class="veggie-hero-box">
+                <img
+                  src="assets/pastas-veggie.png"
+                  alt="Plato gourmet de pastas vegetarianas de calabaza y acelga Goni Pastas"
+                  class="veggie-hero-img"
+                  onerror="this.src = 'assets/hero-pasta.png'"
+                />
+                <div class="veggie-overlay-card">
+                  <h3>
+                    <i class="fa-solid fa-circle-check"></i> Compromiso
+                    Vegetariano
+                  </h3>
+                  <p>
+                    Elaboramos las variedades vegetarianas en bateas y
+                    superficies separadas para garantizar que ningún producto
+                    contenga caldos ni derivados cárnicos.
+                  </p>
+                  <a
+                    href="https://wa.me/5491164645474?text=Hola%20Goni%20Pastas!%20Quiero%20hacer%20un%20pedido%20de%20opciones%20vegetarianas"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-veggie-cta"
+                    id="btn-veggie-full"
+                  >
+                    <i class="fa-brands fa-whatsapp"></i> Pedir Opciones
+                    Vegetarianas
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+         SECCIÓN ENVÍOS A DOMICILIO, MAPA Y CONSEJOS
+         ============================================== -->
+      <section class="section delivery-section" id="envios">
+        <div class="container">
+          <div class="section-header text-center">
+            <div class="section-tag">
+              <i class="fa-solid fa-truck-fast"></i> Envíos a Domicilio
+            </div>
+            <h2 class="section-title">Zona de Envíos & Cómo Comprar</h2>
+            <p class="section-subtitle">
+              Llevamos tus pastas y empanadas en caja térmica directo a tu
+              puerta, para que mantengan la cadena de frío perfecta hasta tu
+              freezer.
+            </p>
+          </div>
+
+          <div class="delivery-grid">
+            <!-- Columna de Información y Pasos -->
+            <div class="delivery-info-col">
+              <div class="delivery-steps-box">
+                <h3>¿Cómo hacer tu pedido en 3 simples pasos?</h3>
+                <div class="step-card">
+                  <div class="step-num">1</div>
+                  <div class="step-details">
+                    <h4>Elegí tus variedades</h4>
+                    <p>
+                      Revisá nuestra carta de sorrentinos y empanadas
+                      congeladas.
+                    </p>
+                  </div>
+                </div>
+                <div class="step-card">
+                  <div class="step-num">2</div>
+                  <div class="step-details">
+                    <h4>Escribinos a WhatsApp</h4>
+                    <p>
+                      Hacé clic en el botón verde, decinos tu pedido y tu
+                      dirección de entrega.
+                    </p>
+                  </div>
+                </div>
+                <div class="step-card">
+                  <div class="step-num">3</div>
+                  <div class="step-details">
+                    <h4>¡Recibí y disfrutá!</h4>
+                    <p>
+                      Te confirmamos el horario de llegada. Podés abonar en
+                      efectivo, transferencia o Mercado Pago.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tips de Conservación y Cocción -->
+              <div class="tips-accordion">
+                <h3>
+                  <i class="fa-solid fa-lightbulb"></i> Tips de Conservación &
+                  Cocción
+                </h3>
+                <div class="tip-card">
+                  <div class="tip-icon">
+                    <i class="fa-solid fa-snowflake"></i>
+                  </div>
+                  <div>
+                    <strong>¿Cómo conservar las empanadas y pastas?</strong>
+                    <p>
+                      Mantenelas en freezer a -18°C. Las empanadas se conservan
+                      perfectas hasta 90 días y las pastas hasta 60 días sin
+                      perder humedad.
+                    </p>
+                  </div>
+                </div>
+                <div class="tip-card">
+                  <div class="tip-icon"><i class="fa-solid fa-fire"></i></div>
+                  <div>
+                    <strong>¡Sin descongelar!</strong>
+                    <p>
+                      <strong>Pastas:</strong> Directo del freezer al agua
+                      hirviendo con sal abundante.
+                      <strong>Empanadas:</strong> Directo al horno precalentado
+                      a 200°C sobre placa aceitada durante 15-18 minutos hasta
+                      dorar.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Columna del Mapa de Zona de Cobertura -->
+            <div class="delivery-map-col">
+              <div class="map-container-box">
+                <div class="map-header">
+                  <div>
+                    <h4 class="map-title">
+                      <i class="fa-solid fa-location-dot"></i> Zona de Cobertura
+                      y Entregas
+                    </h4>
+                    <span class="map-subtitle"
+                      >Envíos programados y express en toda el área
+                      destacada</span
+                    >
+                  </div>
+                  <span class="coverage-badge">Envíos Activos</span>
+                </div>
+
+                <!-- Contenedor del Mapa Interactivo Leaflet -->
+                <div
+                  id="delivery-map"
+                  class="map-view"
+                  aria-label="Mapa interactivo de cobertura de envíos"
+                ></div>
+
+                <div class="map-footer-details">
+                  <div class="map-zone-item">
+                    <span class="zone-color-indicator zone-green"></span>
+                    <div>
+                      <strong>Zona 1 (Radio cercano hasta 4 km)</strong>
+                      <span>Envío Gratis!!</span>
+                    </div>
+                  </div>
+                  <div class="map-zone-item">
+                    <span class="zone-color-indicator zone-yellow"></span>
+                    <div>
+                      <strong>Zona 2 (Radio extendido hasta 10 km)</strong>
+                      <span>Costo accesible de mensajería refrigerada</span>
+                    </div>
+                  </div>
+                  <div class="map-zone-item">
+                    <span class="zone-color-indicator zone-blue"></span>
+                    <div>
+                      <strong>Otras zonas</strong>
+                      <span>Consultar</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+         MODAL / DIÁLOGO DE RESUMEN DE PEDIDO WHATSAPP
+         ============================================== -->
+      <div
+        class="order-modal-backdrop"
+        id="order-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-product-title"
+      >
+        <div class="order-modal-content">
+          <button
+            class="order-modal-close"
+            id="order-modal-close"
+            aria-label="Cerrar ventana"
+          >
+            &times;
+          </button>
+          <div class="modal-header">
+            <div class="modal-icon"><i class="fa-brands fa-whatsapp"></i></div>
+            <div>
+              <h3 id="modal-product-title">Hacer Pedido por WhatsApp</h3>
+              <p>Completá la cantidad y se abrirá tu chat listo para enviar</p>
+            </div>
+          </div>
+          <div class="modal-body">
+            <div class="modal-product-preview">
+              <span class="modal-prod-name" id="modal-item-name"
+                >Sorrentinos</span
+              >
+              <span class="modal-prod-price" id="modal-item-price">$0</span>
+            </div>
+            <div class="modal-form-group">
+              <label for="modal-quantity">Cantidad:</label>
+              <div class="quantity-control">
+                <button
+                  type="button"
+                  class="qty-btn"
+                  id="qty-minus"
+                  aria-label="Disminuir"
+                >
+                  -
+                </button>
+                <input
+                  type="number"
+                  id="modal-quantity"
+                  value="1"
+                  min="1"
+                  max="50"
+                />
+                <button
+                  type="button"
+                  class="qty-btn"
+                  id="qty-plus"
+                  aria-label="Aumentar"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+            <div class="modal-form-group">
+              <label for="modal-notes"
+                >Aclaración opcional (salsa, horario, dirección):</label
+              >
+              <input
+                type="text"
+                id="modal-notes"
+                placeholder="Ej: Con salsa pomodoro / Enviar a calle 123..."
+              />
+            </div>
+            <button
+              type="button"
+              class="btn btn-whatsapp-cta btn-block"
+              id="modal-send-wa"
+            >
+              <i class="fa-brands fa-whatsapp"></i> Enviar Pedido a WhatsApp
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ==============================================
+       FOOTER (DATOS DE CONTACTO, HORARIOS, REDES)
+       ============================================== -->
+    <footer class="site-footer" id="contacto">
+      <div class="container footer-container">
+        <!-- Columna 1: Marca y Filosofía -->
+        <div class="footer-col brand-col">
+          <div class="footer-brand">
+            <img
+              src="assets/logo.png"
+              alt="Logo Goni Pastas"
+              class="footer-logo-img"
+              onerror="this.src = 'Captura de pantalla 2026-10-11 193916.png'"
+            />
+            <div>
+              <h3 class="footer-brand-title">Goni Pastas</h3>
+              <span class="footer-brand-tagline"
+                >Pastas Frescas & Empanadas Congeladas</span
+              >
+            </div>
+          </div>
+          <p class="footer-about-text">
+            Elaboración artesanal diaria con ingredientes genuinos. Calidad
+            familiar desde nuestra mesa hasta la tuya. Pedidos con entrega a
+            domicilio programada.
+          </p>
+          <div class="footer-socials">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+              aria-label="Seguinos en Instagram"
+              id="social-instagram"
+            >
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+              aria-label="Seguinos en Facebook"
+              id="social-facebook"
+            >
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a
+              href="https://wa.me/5491164645474"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link social-wa"
+              aria-label="Chatear por WhatsApp"
+              id="social-whatsapp"
+            >
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Columna 2: Enlaces Rápidos -->
+        <div class="footer-col links-col">
+          <h4 class="footer-heading">Navegación</h4>
+          <ul class="footer-links">
+            <li>
+              <a href="#inicio"
+                ><i class="fa-solid fa-angle-right"></i> Inicio</a
+              >
+            </li>
+            <li>
+              <a href="#nosotros"
+                ><i class="fa-solid fa-angle-right"></i> Quiénes Somos</a
+              >
+            </li>
+            <li>
+              <a href="#pastas"
+                ><i class="fa-solid fa-angle-right"></i> Carta de Pastas &
+                Empanadas</a
+              >
+            </li>
+            <li>
+              <a href="#vegetarianas"
+                ><i class="fa-solid fa-angle-right"></i> Opciones
+                Vegetarianas</a
+              >
+            </li>
+            <li>
+              <a href="#envios"
+                ><i class="fa-solid fa-angle-right"></i> Zonas de Envíos &
+                Consejos</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Columna 3: Horarios de Atención -->
+        <div class="footer-col hours-col">
+          <h4 class="footer-heading">Horarios de Atención</h4>
+          <ul class="footer-schedule">
+            <li>
+              <span class="schedule-day">Martes a Sábados:</span>
+              <span class="schedule-hours"
+                >09:30 a 14:00 • 17:30 a 21:00 hs</span
+              >
+            </li>
+            <li>
+              <span class="schedule-day">Domingos y Feriados:</span>
+              <span class="schedule-hours"
+                >09:30 a 14:30 hs (Pastas del Domingo)</span
+              >
+            </li>
+            <li>
+              <span class="schedule-day">Lunes:</span>
+              <span class="schedule-hours closed-text"
+                >Cerrado (Descanso de producción)</span
+              >
+            </li>
+          </ul>
+          <div class="payment-methods">
+            <span class="payment-title">Medios de Pago:</span>
+            <div class="payment-badges">
+              <span class="pay-badge"
+                ><i class="fa-solid fa-money-bill-wave"></i> Efectivo
+              </span>
+              <span class="pay-badge"
+                ><i class="fa-solid fa-qrcode"></i> Mercado Pago</span
+              >
+              <span class="pay-badge"
+                ><i class="fa-solid fa-building-columns"></i>
+                Transferencia</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna 4: Contacto y Envíos -->
+        <div class="footer-col contact-col">
+          <h4 class="footer-heading">Contacto & Retiros</h4>
+          <ul class="footer-contact-info">
+            <li>
+              <i class="fa-brands fa-whatsapp"></i>
+              <div>
+                <strong>WhatsApp Pedidos:</strong>
+                <a
+                  href="https://wa.me/5491164645474"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >+54 9 11 6464-5474</a
+                >
+              </div>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <div>
+                <strong>Teléfono:</strong>
+                <a href="tel:01164645474">(011) 6464-5474</a>
+              </div>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <div>
+                <strong>Correo:</strong>
+                <a href="mailto:gonipastas@gmail.com">gonipastas@gmail.com</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Barra de Copyright -->
+      <div class="footer-bottom">
+        <div class="container footer-bottom-content">
+          <p>© 2026 - Ceci dev</p>
+          <p class="footer-credits">
+            Pastas Frescas • Empanadas Congeladas • Sabor Familiar
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ==============================================
+       BOTÓN FLOTANTE INTERACTIVO DE WHATSAPP
+       ============================================== -->
+    <div class="floating-whatsapp-container" id="floating-whatsapp-container">
+      <div class="whatsapp-tooltip" id="whatsapp-tooltip">
+        <span class="tooltip-title">¡Hola! 👋</span>
+        <span class="tooltip-text"
+          >¿En qué podemos ayudarte? Hacé tu pedido aquí.</span
+        >
+      </div>
+      <a
+        href="https://wa.me/5491164645474?text=Hola%20Goni%20Pastas!%20Quisiera%20hacer%20una%20consulta%20o%20pedido"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-floating-whatsapp"
+        id="btn-floating-wa"
+        aria-label="Contactar por WhatsApp a Goni Pastas"
+      >
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="whatsapp-pulse"></span>
+      </a>
+    </div>
+
+    <!-- Botón Scroll to Top -->
+    <button
+      class="btn-scroll-top"
+      id="btn-scroll-top"
+      aria-label="Volver arriba"
+    >
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- ==============================================
+       SCRIPTS JAVASCRIPT
+       ============================================== -->
+    <!-- Leaflet JS para el Mapa Interactivo -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <!-- Lógica Principal -->
+    <script src="main.js"></script>
+  </body>
+</html>
